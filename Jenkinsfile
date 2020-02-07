@@ -35,8 +35,11 @@ pipeline {
 		        }
             }
             steps {
-		        sh 'useradd -u 125 jenkins'
-                sh 'pyinstaller --onefile sources/add2vals.py'
+		        sh '''
+                groupadd -g 132 jenkins
+                useradd -u 125 -g 132 jenkins
+                pyinstaller --onefile sources/add2vals.py
+                '''
             }
             post{
                 success {
