@@ -31,8 +31,8 @@ pipeline {
         stage('Deliver') {
             agent {
                 docker { 
-			image 'cdrx/pyinstaller-linux:python2' 
-		}
+			        image 'cdrx/pyinstaller-linux:python2' 
+		        }
             }
             steps {
 		        sh 'useradd -u 125 jenkins'
