@@ -31,15 +31,11 @@ pipeline {
         stage('Deliver') {
             agent {
                 docker { 
-			        image 'cdrx/pyinstaller-linux:python2' 
+			        image 'avantaditya/pyinstaller-linux:python2' 
 		        }
             }
             steps {
-		        sh '''
-                groupadd -g 132 jenkins
-                useradd -u 125 -g 132 jenkins
-                pyinstaller --onefile sources/add2vals.py
-                '''
+		        sh 'pyinstaller --onefile add2vals.py'
             }
             post{
                 success {
